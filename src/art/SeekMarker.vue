@@ -1,25 +1,27 @@
 <script setup lang="ts">
-// The timeline's playhead: a gorilla (keeki_seek_marker.svg) with its face on the current time. It has three moods of
+// The timeline's playhead (vods-core's `art.playhead`, with the snail's props): a gorilla (keeki_seek_marker.svg) with its face on the current time. It has three moods of
 // two frames each: walking while the VOD plays (one frame a second at normal speed, faster or slower with the playback
 // speed), asleep while paused, and hopping while the time is being moved.
-// The face, chest and hands take the site's accent; the fur takes `fur` (the game being played), or the drawing's own
+// The face, chest and hands take the site's accent; the fur takes `shell` (the game being played), or the drawing's own
 // tan when there is none. The darker and lighter shades are mixed from those.
 import { computed } from 'vue'
 
-export type SeekMode = 'play' | 'pause' | 'seek'
+type SeekMode = 'play' | 'pause' | 'seek'
 
-const props = withDefaults(defineProps<{ mode: SeekMode; rate?: number; fur?: string }>(), { rate: 1 })
+const props = withDefaults(defineProps<{ mode: 'walk' | 'sleep' | 'float'; rate?: number; shell?: string }>(), { rate: 1 })
+const MOOD = { walk: 'play', sleep: 'pause', float: 'seek' } as const
+const mood = computed<SeekMode>(() => MOOD[props.mode])
 
 /** Seconds per frame. */
 const FRAME: Record<SeekMode, number> = { play: 1, pause: 1.5, seek: 0.5 }
 const style = computed(() => ({
-  '--seek-frame': `${props.mode === 'play' && props.rate > 0 ? FRAME.play / props.rate : FRAME[props.mode]}s`,
-  ...(props.fur ? { '--seek-fur': props.fur } : {}),
+  '--seek-frame': `${mood.value === 'play' && props.rate > 0 ? FRAME.play / props.rate : FRAME[mood.value]}s`,
+  ...(props.shell ? { '--seek-fur': props.shell } : {}),
 }))
 </script>
 
 <template>
-  <svg class="marker" :data-mode="mode" :style="style" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <svg class="marker" :data-mode="mood" :style="style" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <g class="mode play">
       <g class="frame f1" transform="matrix(1.0152874,0,0,1.0152874,-0.32483499,-0.36480066)">
         <ellipse class="f-accent" cx="12.796" cy="21.0326" rx="1.2882" ry="0.7862" />

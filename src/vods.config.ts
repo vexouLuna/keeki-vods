@@ -1,7 +1,7 @@
 // What makes this site keekivods.vexoul.net: the channel it archives and its name. The logic (API, player, chat,
-// lists) is @vex/vods-core's; the pages and look are this repo's own (src/).
+// lists) and the pages are @vex/vods-core's; the look is this repo's own (src/).
 import { defineVodsConfig } from '@vex/vods-core'
-import type { VodsSiteOptions } from '@vex/vods-core/kit'
+import type { VodsAppOptions } from '@vex/vods-core/app'
 
 export const vodsConfig = defineVodsConfig({
   channel: 'keeki_dechu',
@@ -10,7 +10,7 @@ export const vodsConfig = defineVodsConfig({
   startDate: '2026-10-07',
 })
 
-export const site: VodsSiteOptions['site'] = {
+export const site: VodsAppOptions['site'] = {
   id: 'keekivods',
   name: 'Keeki Archives',
   twitchUrl: 'https://twitch.tv/keeki_dechu',

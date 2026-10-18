@@ -1,18 +1,17 @@
 <script setup lang="ts">
-// Frame for every page: the Keeki Archives header (name, ケーキでちゅ, nav), the page in <main>, and the footer, which
-// links to vexoul.net only as the site's maker; the header ends with the vexoul.net sign-in (AccountMenu). `fill`: the watch page, as wide as the window and exactly its height
-// (the player and chat size themselves to it), with no footer; `header` false hides the header (theater mode).
+// UiShell in the Keeki Archives look: the header (name, ケーキでちゅ, the app's `nav`, then the `actions` and
+// `account` slots), the page in <main>, and the footer, which links to vexoul.net only as the site's maker.
+// `fill`: the watch page, as wide as the window and exactly its height (the player and chat size themselves to it),
+// with no footer; `header` false hides the header (theater mode). `sky` is Deep Field's star sky: no such thing here.
 import { RouterLink } from 'vue-router'
-import { KToastHost } from '@/ui'
-import AccountMenu from './AccountMenu.vue'
+import KToastHost from './KToastHost.vue'
+import type { NavItem } from './types'
 
-withDefaults(defineProps<{ fill?: boolean; header?: boolean }>(), { fill: false, header: true })
-
-const NAV = [
-  { to: '/', label: 'Home', exact: true },
-  { to: '/vods', label: 'VODs', exact: false },
-  { to: '/playthroughs', label: 'Playthroughs', exact: false },
-]
+withDefaults(defineProps<{ nav: NavItem[]; fill?: boolean; header?: boolean; sky?: 'full' | 'dim' | 'off' }>(), {
+  fill: false,
+  header: true,
+  sky: undefined,
+})
 </script>
 
 <template>
@@ -26,22 +25,21 @@ const NAV = [
         </RouterLink>
         <div class="end">
           <nav aria-label="Main" class="nav">
-            <RouterLink
-              v-for="n in NAV"
-              :key="n.to"
-              v-slot="{ href, navigate, isActive, isExactActive }"
-              :to="n.to"
-              custom
-            >
-              <a
-                :href="href"
-                :class="{ on: n.exact ? isExactActive : isActive }"
-                :aria-current="(n.exact ? isExactActive : isActive) ? 'page' : undefined"
-                @click="navigate"
-              >{{ n.label }}</a>
-            </RouterLink>
+            <template v-for="n in nav" :key="n.label">
+              <RouterLink v-if="n.to" v-slot="{ href, navigate, isActive }" :to="n.to" custom>
+                <a
+                  :href="href"
+                  :class="{ on: n.current ?? isActive }"
+                  :aria-current="(n.current ?? isActive) ? 'page' : undefined"
+                  @click="navigate"
+                >{{ n.label }}</a>
+              </RouterLink>
+              <a v-else :href="n.href" :target="n.external ? '_blank' : undefined" :rel="n.external ? 'noopener' : undefined"
+                >{{ n.label }}<span v-if="n.external" aria-hidden="true"> ↗</span></a>
+            </template>
           </nav>
-          <AccountMenu />
+          <slot name="actions"></slot>
+          <slot name="account"></slot>
         </div>
       </div>
     </header>
@@ -86,7 +84,7 @@ const NAV = [
 .nav a.on { color: var(--k-accent); }
 
 .main {
-  container: k-site / inline-size; flex: 1 0 auto; width: 100%; max-width: 1200px; margin: 0 auto;
+  container: vods / inline-size; flex: 1 0 auto; width: 100%; max-width: 1200px; margin: 0 auto;
   padding: 24px 24px 56px; outline: none;
 }
 .is-fill .main { flex: 1 1 0; max-width: none; padding: 0; display: flex; flex-direction: column; min-height: 0; }

@@ -25,3 +25,22 @@ export interface SortState {
   key: string
   dir: 'asc' | 'desc'
 }
+
+/** One header link (KShell). */
+export interface NavItem {
+  label: string
+  /** Router location. */
+  to?: string
+  /** Plain link. */
+  href?: string
+  current?: boolean
+  /** Leaves the site: opens in a new tab. */
+  external?: boolean
+}
+
+/** Who the account menu shows as signed in (KAccountMenu). */
+export interface AccountUser {
+  name: string
+  color?: string | null
+  avatar?: string
+}
