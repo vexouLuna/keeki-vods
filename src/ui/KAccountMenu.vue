@@ -1,16 +1,17 @@
 <script setup lang="ts">
 // UiAccountMenu in the Keeki Archives look (the same props, events and slot as vex-ui's VxAccountMenu). Signed out,
-// "Sign in" (greyed out when sign-in is off); signed in, the name opens a menu: `note`, then the app's items
-// (default slot), then "Sign out everywhere" (as VxAccountMenu; the app always signs out everywhere).
+// "Sign in" (greyed out when sign-in is off or the account is still being checked); signed in, the name opens a menu: `note`, then the app's items
+// (default slot), then "Sign out" (as VxAccountMenu; it ends every session).
 import { initials } from '@vex/ui/utils'
 import KButton from './KButton.vue'
 import KMenuItem from './KMenuItem.vue'
 import KPopover from './KPopover.vue'
 import type { AccountUser } from './types'
 
-withDefaults(defineProps<{ user?: AccountUser | null; disabled?: boolean; note?: string }>(), {
+withDefaults(defineProps<{ user?: AccountUser | null; disabled?: boolean; checking?: boolean; note?: string }>(), {
   user: null,
   disabled: false,
+  checking: false,
   note: 'Signed in on vexoul.net',
 })
 const emit = defineEmits<{ signIn: []; signOut: [] }>()
@@ -29,14 +30,14 @@ const emit = defineEmits<{ signIn: []; signOut: [] }>()
     <template #default="{ close }">
       <div class="k-eyebrow head">{{ note }}</div>
       <slot :close="close"></slot>
-      <KMenuItem @click="close(), emit('signOut')">Sign out everywhere</KMenuItem>
+      <KMenuItem @click="close(), emit('signOut')">Sign out</KMenuItem>
     </template>
   </KPopover>
   <KButton
     v-else
     size="sm"
-    :disabled="disabled"
-    :title="disabled ? 'Sign-in is off on this copy of the site' : 'Sign in with Twitch, through vexoul.net: your watch progress follows you to any device'"
+    :disabled="disabled || checking"
+    :title="checking ? 'Checking sign-in…' : disabled ? 'Sign-in is off on this copy of the site' : 'Sign in with Twitch, through vexoul.net: your watch progress follows you to any device'"
     @click="emit('signIn')"
   >Sign in</KButton>
 </template>

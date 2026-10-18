@@ -349,3 +349,70 @@ button.k-chip:hover { border-color: var(--k-muted); }
   --vods-radius-sm: var(--k-radius-sm);
   --vods-font-mono: var(--k-mono);
 }
+
+/* The app's pages in the cinema's dress. Only colours, type and frames here: the layout and copy are vods-core's. */
+/* Filters on the VOD list (All, game, tag, date) are the uppercase filter buttons; Load more and the secondary
+   buttons beside Watch are outlined marquee ones. */
+.bar > .filters .k-btn:not(.is-icon) { font-family: var(--k-display); font-weight: 900; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+.bar > .filters .k-btn:not(.is-icon)[aria-pressed='true'] { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
+.more > .k-btn, .latest .actions > .k-btn:not(.is-primary), .empty .actions > .k-btn:not(.is-primary), a.k-btn.see-all {
+  background: transparent; font-family: var(--k-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.more > .k-btn, a.k-btn.see-all { border-color: var(--k-accent); color: var(--k-accent); }
+a.k-btn.see-all:hover { background: transparent; color: var(--k-accent); border-color: var(--k-accent); filter: brightness(1.15); }
+
+/* The latest broadcast is a strip of film (sprocket holes along both edges) with the title on a board under the
+   picture. */
+.latest.vods-panel {
+  --hole: linear-gradient(90deg, transparent 3px, var(--k-film-hole) 3px 13px, transparent 13px);
+  padding-block: 28px; border: 0;
+  background: var(--hole) 8px 6px / 16px 10px repeat-x, var(--hole) 8px calc(100% - 6px) / 16px 10px repeat-x, var(--k-film);
+}
+.latest > .main { gap: 0; }
+.latest > .main > .vods-eyebrow, .latest > .main > .title { background: var(--k-board); color: var(--k-board-ink); text-align: center; }
+.latest > .main > .vods-eyebrow { padding: 12px 16px 2px; color: var(--k-kicker); font-weight: 900; letter-spacing: 0.3em; }
+.latest > .main > .title {
+  padding: 2px 16px 14px; font-family: var(--k-display); font-weight: 900; font-size: 34px; line-height: 0.95;
+  text-transform: uppercase; letter-spacing: 0.02em; text-wrap: balance;
+}
+.latest > .main > .title a { color: inherit; }
+.latest > .main > .title a:hover { color: var(--k-accent); }
+@container vods (max-width: 560px) { .latest > .main > .title { font-size: 26px; } }
+
+/* The home's sections head up like a programme: big, with a rule under. */
+.strip.vods-panel > .vods-eyebrow, .strip.vods-panel .head > .vods-eyebrow {
+  font-weight: 900; font-size: 28px; line-height: 1; letter-spacing: 0.03em; color: var(--k-ink);
+}
+.strip.vods-panel > .vods-eyebrow, .strip.vods-panel .head { padding-bottom: 8px; border-bottom: 2px solid var(--k-ink); }
+
+/* A VOD card is a panel with its title in display type. */
+article.card:has(> .text) { gap: 0; background: var(--k-panel); border: 1px solid var(--k-line); }
+article.card > .text { padding: 10px 12px 12px; gap: 5px; }
+article.card > .text .title {
+  font-family: var(--k-display); font-weight: 900; font-size: 17px; line-height: 1.1; text-transform: uppercase;
+}
+
+/* Most played: each poster in its case, its name on a title board. */
+.hand .card { background: var(--k-frame); border-color: var(--k-line); }
+.hand .card:hover, .hand .card:focus-visible {
+  border-color: var(--k-accent); box-shadow: 0 0 0 1px var(--k-accent), 0 0 22px color-mix(in srgb, var(--k-accent) 25%, transparent), 0 10px 24px rgb(0 0 0 / 0.55);
+}
+.hand .card > .name {
+  padding: 5px 6px 6px; background: var(--k-board); color: var(--k-board-ink);
+  font-family: var(--k-display); font-size: 13px; font-weight: 700; line-height: 1.1; text-transform: uppercase;
+}
+/* A game with no box art: the blank poster in its case, its name set on it (as KNoPoster), above the board. */
+.hand .card > .k-ph {
+  position: relative; height: 100%; padding-bottom: 30%;
+  background: radial-gradient(ellipse at center, var(--k-leader) 0%, var(--k-thumb) 85%);
+}
+.hand .card > .k-ph::before {
+  content: ''; position: absolute; inset: 7%; bottom: calc(30% + 4px); border: 1px solid var(--k-leader-line);
+  outline: 1px solid var(--k-leader-line); outline-offset: 3px; pointer-events: none;
+}
+.hand .card > .k-ph > span {
+  padding: 0 16%; font-family: var(--k-display); font-weight: 900; font-size: 15px; line-height: 0.95; letter-spacing: 0.04em;
+  text-transform: uppercase; text-wrap: balance; color: var(--k-board-ink);
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow-wrap: anywhere; text-overflow: clip;
+}
