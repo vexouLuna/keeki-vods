@@ -1,33 +1,72 @@
 // keeki-vods' own controls: the jobs vex-ui's do on the other sites, in the Keeki Archives look (theme.css).
-export { default as KButton } from './KButton.vue'
-export { default as KCallout } from './KCallout.vue'
-export { default as KChapterBar } from './KChapterBar.vue'
-export { default as KCheckbox } from './KCheckbox.vue'
-export { default as KChip } from './KChip.vue'
-export { default as KDateRange } from './KDateRange.vue'
-export { default as KDialog } from './KDialog.vue'
-export { default as KEmptyState } from './KEmptyState.vue'
-export { default as KField } from './KField.vue'
-export { default as KInput } from './KInput.vue'
-export { default as KKbd } from './KKbd.vue'
-export { default as KLink } from './KLink.vue'
-export { default as KMenuItem } from './KMenuItem.vue'
+// `keekiUi` hands them to vods-core's app as its Ui* controls (createVodsApp's `ui`).
+import type { VodsUi } from '@vex/vods-core/app'
+
+import KAccountMenu from './KAccountMenu.vue'
+import KButton from './KButton.vue'
+import KCallout from './KCallout.vue'
+import KChapterBar from './KChapterBar.vue'
+import KCheckbox from './KCheckbox.vue'
+import KChip from './KChip.vue'
+import KDateRange from './KDateRange.vue'
+import KDialog from './KDialog.vue'
+import KEmptyState from './KEmptyState.vue'
+import KField from './KField.vue'
+import KInput from './KInput.vue'
+import KKbd from './KKbd.vue'
+import KLink from './KLink.vue'
+import KMenuItem from './KMenuItem.vue'
+import KPlaceholder from './KPlaceholder.vue'
+import KPopover from './KPopover.vue'
+import KPosters from './KPosters.vue'
+import KProgress from './KProgress.vue'
+import KSegmented from './KSegmented.vue'
+import KSelect from './KSelect.vue'
+import KShell from './KShell.vue'
+import KSkeleton from './KSkeleton.vue'
+import KSlider from './KSlider.vue'
+import KSpinner from './KSpinner.vue'
+import KStatusDot from './KStatusDot.vue'
+import KStepper from './KStepper.vue'
+import KSwitch from './KSwitch.vue'
+import KTable from './KTable.vue'
+import KTabs from './KTabs.vue'
+import KTooltip from './KTooltip.vue'
+
 export { default as KNoPicture } from './KNoPicture.vue'
-export { default as KNoPoster } from './KNoPoster.vue'
-export { default as KPlaceholder } from './KPlaceholder.vue'
-export { default as KPopover } from './KPopover.vue'
-export { default as KPosters } from './KPosters.vue'
-export { default as KProgress } from './KProgress.vue'
-export { default as KSegmented } from './KSegmented.vue'
-export { default as KSelect } from './KSelect.vue'
-export { default as KSkeleton } from './KSkeleton.vue'
-export { default as KSlider } from './KSlider.vue'
-export { default as KSpinner } from './KSpinner.vue'
-export { default as KStatusDot } from './KStatusDot.vue'
-export { default as KStepper } from './KStepper.vue'
-export { default as KSwitch } from './KSwitch.vue'
-export { default as KTable } from './KTable.vue'
-export { default as KTabs } from './KTabs.vue'
-export { default as KToastHost } from './KToastHost.vue'
-export { default as KTooltip } from './KTooltip.vue'
-export type { Option, SortState, TableColumn } from './types'
+export type { AccountUser, NavItem, Option, SortState, TableColumn } from './types'
+
+export const keekiUi: VodsUi = {
+  components: {
+    AccountMenu: KAccountMenu,
+    Button: KButton,
+    Callout: KCallout,
+    ChapterBar: KChapterBar,
+    Checkbox: KCheckbox,
+    Chip: KChip,
+    DateRange: KDateRange,
+    Dialog: KDialog,
+    EmptyState: KEmptyState,
+    Field: KField,
+    Input: KInput,
+    Kbd: KKbd,
+    Link: KLink,
+    MenuItem: KMenuItem,
+    Placeholder: KPlaceholder,
+    Popover: KPopover,
+    Posters: KPosters,
+    Progress: KProgress,
+    Segmented: KSegmented,
+    Select: KSelect,
+    Shell: KShell,
+    Skeleton: KSkeleton,
+    Slider: KSlider,
+    Spinner: KSpinner,
+    StatusDot: KStatusDot,
+    Stepper: KStepper,
+    Switch: KSwitch,
+    Table: KTable,
+    Tabs: KTabs,
+    Tooltip: KTooltip,
+  },
+}

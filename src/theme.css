@@ -57,11 +57,11 @@ img { max-width: 100%; }
 ::selection { background: var(--k-accent); color: var(--k-accent-ink); }
 
 /* ---- type ---- */
-.k-display {
+.vods-display, .k-display {
   margin: 0; font-family: var(--k-display); font-weight: 900; line-height: 0.95; text-transform: uppercase;
   letter-spacing: 0.02em; text-wrap: balance;
 }
-.k-eyebrow {
+.vods-eyebrow, .k-eyebrow {
   font-family: var(--k-display); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--k-muted);
 }
@@ -69,15 +69,15 @@ img { max-width: 100%; }
   font-family: var(--k-display); font-weight: 900; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--k-kicker);
 }
-.k-mono { font-family: var(--k-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
-.k-muted { color: var(--k-muted); }
+.vods-mono, .k-mono { font-family: var(--k-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+.vods-muted, .k-muted { color: var(--k-muted); }
 .k-sr {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap; border: 0;
 }
 
 /* ---- surfaces ---- */
-.k-panel { background: var(--k-panel); border: 1px solid var(--k-line); }
+.vods-panel, .k-panel { background: var(--k-panel); border: 1px solid var(--k-line); }
 /* A section's heading: big, with a rule under it. */
 .k-section-head {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
@@ -96,24 +96,24 @@ img { max-width: 100%; }
 }
 .k-sprockets.is-sm { height: 18px; padding: 5px 6px; }
 .k-sprockets.is-sm::before { mask-size: 12px 8px; }
-.k-ring { outline: 1px solid rgb(255 255 255 / 0.06); outline-offset: -1px; }
+.vods-ring, .k-ring { outline: 1px solid rgb(255 255 255 / 0.06); outline-offset: -1px; }
 
 /* ---- controls ---- */
-.k-btn {
+.vods-btn, .k-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: var(--k-control);
   padding: 0 12px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel);
   color: var(--k-ink); font-family: var(--k-body); font-size: 13px; font-weight: 500; line-height: 1;
   text-decoration: none; white-space: nowrap; cursor: pointer; user-select: none;
 }
-.k-btn:hover:not(:disabled) { border-color: var(--k-muted); }
-.k-btn:disabled { opacity: 0.45; cursor: default; }
+.vods-btn:hover:not(:disabled), .k-btn:hover:not(:disabled) { border-color: var(--k-muted); }
+.vods-btn:disabled, .k-btn:disabled { opacity: 0.45; cursor: default; }
 .k-btn[aria-pressed='true'], .k-btn.is-pressed { border-color: var(--k-accent); color: var(--k-accent); }
 /* The big uppercase ones: Watch (filled) and the outlined marquee buttons. */
 .k-btn.is-primary, .k-btn.is-marquee {
   font-family: var(--k-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
 }
-.k-btn.is-primary { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
-.k-btn.is-primary:hover:not(:disabled) { border-color: var(--k-accent); filter: brightness(1.08); }
+.vods-btn.is-primary, .k-btn.is-primary { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
+.vods-btn.is-primary:hover:not(:disabled), .k-btn.is-primary:hover:not(:disabled) { border-color: var(--k-accent); filter: brightness(1.08); }
 .k-btn.is-marquee { background: transparent; }
 .k-btn.is-marquee.is-accent { border-color: var(--k-accent); color: var(--k-accent); }
 .k-btn.is-filter { font-family: var(--k-display); font-weight: 900; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
@@ -121,7 +121,7 @@ img { max-width: 100%; }
 .k-btn.is-ghost { background: transparent; border-color: transparent; }
 .k-btn.is-ghost:hover:not(:disabled) { background: var(--k-surface); border-color: transparent; }
 .k-btn.is-danger { color: var(--k-bad); }
-.k-btn.is-sm { height: var(--k-control-sm); padding: 0 9px; font-size: 12px; gap: 5px; }
+.vods-btn.is-sm, .k-btn.is-sm { height: var(--k-control-sm); padding: 0 9px; font-size: 12px; gap: 5px; }
 .k-btn.is-icon { width: var(--k-control); padding: 0; }
 .k-btn.is-icon.is-sm { width: var(--k-control-sm); }
 .k-btn.is-block { display: flex; width: 100%; }
@@ -140,11 +140,11 @@ img { max-width: 100%; }
 .k-input-wrap > .k-input:focus-visible { outline: none; }
 .k-input-icon { padding-left: 10px; color: var(--k-muted); }
 .k-input-clear { margin-right: 6px; }
-.k-input {
+.vods-input, .k-input {
   width: 100%; min-width: 0; height: var(--k-control); padding: 0 10px; border: 1px solid var(--k-line);
   border-radius: var(--k-radius); background: var(--k-panel); color: var(--k-ink); font-size: 13px;
 }
-.k-input::placeholder { color: var(--k-muted); }
+.vods-input::placeholder, .k-input::placeholder { color: var(--k-muted); }
 .k-input[type='search']::-webkit-search-cancel-button { display: none; }
 .k-input[type='date'] { color-scheme: dark; }
 
@@ -210,7 +210,7 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-table .is-right { text-align: right; }
 .k-table .is-mono { font-family: var(--k-mono); }
 .k-table .is-muted { color: var(--k-muted); }
-@container k-site (max-width: 760px) { .k-table td, .k-table th { white-space: nowrap; } }
+@container vods (max-width: 760px) { .k-table td, .k-table th { white-space: nowrap; } }
 
 .k-status { display: inline-flex; align-items: center; gap: 7px; }
 .k-status-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--k-muted); }
@@ -236,7 +236,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
 .k-chip.is-active { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
 
 /* ---- overlays ---- */
-.k-pop {
+.vods-pop, .k-pop {
   position: fixed; z-index: 1000; overflow-y: auto; overscroll-behavior: contain; padding: 6px;
   background: var(--k-surface); border: 1px solid var(--k-line); border-radius: var(--k-radius);
   box-shadow: var(--k-shadow); scrollbar-width: thin;
@@ -327,3 +327,25 @@ button.k-chip:hover { border-color: var(--k-muted); }
 }
 
 .k-btn.is-danger-solid { background: var(--k-bad); border-color: var(--k-bad); color: var(--k-ink); }
+
+/* vods-core's app (its pages and cards) in this look: its --vods-* tokens from the ones above. Its .vods-* classes
+   share the .k-* rules. */
+:root {
+  --vods-bg: var(--k-bg);
+  --vods-surface: var(--k-surface);
+  --vods-surface-2: var(--k-surface-2);
+  --vods-pop: var(--k-panel);
+  --vods-ink: var(--k-ink);
+  --vods-muted: var(--k-muted);
+  --vods-line: var(--k-line);
+  --vods-accent: var(--k-accent);
+  --vods-info: var(--k-info);
+  --vods-ok: var(--k-ok);
+  --vods-warn: var(--k-warn);
+  --vods-bad: var(--k-bad);
+  --vods-ring: var(--k-accent);
+  --vods-hover: var(--k-surface-2);
+  --vods-radius: var(--k-radius);
+  --vods-radius-sm: var(--k-radius-sm);
+  --vods-font-mono: var(--k-mono);
+}

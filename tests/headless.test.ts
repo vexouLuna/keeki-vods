@@ -1,5 +1,6 @@
-// keeki-vods has its own look. From @vex/ui it takes only the headless logic (`/utils`, `/account`), never the
-// components or styles; from vods-core it never takes the `/app` entry (vods.vexoul.net's pages) or its CSS.
+// keeki-vods has its own look. It runs vods-core's app (the pages) with its own controls, never Deep Field: from @vex/ui
+// it takes only the headless logic (`/utils`, `/account`), never the components or styles, and from vods-core never
+// the `/deep-field` entry (vods.vexoul.net's controls) or its CSS.
 import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -29,7 +30,7 @@ function forbidden(spec: string): string | null {
     if (spec === '@vex/ui/utils' || spec === '@vex/ui/account') return null
     return `@vex/ui: only /utils and /account (got ${spec})`
   }
-  if (/^@vex\/vods-core\/(app|app\.css)(\/|$)/.test(spec)) return `vods-core's app entry (got ${spec})`
+  if (/^@vex\/vods-core\/deep-field/.test(spec)) return `vods-core's Deep Field entry (got ${spec})`
   return null
 }
 
@@ -47,21 +48,22 @@ function sources(dir: string): string[] {
 }
 
 describe('headless only', () => {
-  it("imports nothing but @vex/ui's /utils and /account, and nothing from vods-core's app entry", () => {
+  it("imports nothing but @vex/ui's /utils and /account, and nothing from vods-core's Deep Field entry", () => {
     const files = [...sources(join(ROOT, 'src')), join(ROOT, 'index.html')]
-    expect(files.length).toBeGreaterThan(50)
+    expect(files.length).toBeGreaterThan(30)
     const bad = files.flatMap((f) => violations(readFileSync(f, 'utf8')).map((v) => `${relative(ROOT, f)}: ${v}`))
     expect(bad).toEqual([])
   })
 
-  it('catches the root, a Vx component, the styles and the app entry', () => {
+  it('catches the root, a Vx component, the styles and the Deep Field entry', () => {
     expect(violations(`import { useToast } from '@vex/ui/utils'\nimport { createAccount } from '@vex/ui/account'`)).toEqual([])
     expect(violations(`import { clamp } from '@vex/ui'`)).toHaveLength(1)
     expect(violations(`import { VxButton } from '@vex/ui/utils'`)).toEqual(['a Vx component from @vex/ui (VxButton)'])
     expect(violations(`import '@vex/ui/style.css'`)).toHaveLength(1)
     expect(violations(`@import '@vex/ui/fonts.css';`)).toHaveLength(1)
     expect(violations(`const P = () => import('@vex/ui')`)).toHaveLength(1)
-    expect(violations(`import { WatchView } from '@vex/vods-core/app'`)).toHaveLength(1)
-    expect(violations(`import '@vex/vods-core/app.css'`)).toHaveLength(1)
+    expect(violations(`import { deepField } from '@vex/vods-core/deep-field'`)).toHaveLength(1)
+    expect(violations(`import '@vex/vods-core/deep-field.css'`)).toHaveLength(1)
+    expect(violations(`import { createVodsApp } from '@vex/vods-core/app'`)).toEqual([])
   })
 })
