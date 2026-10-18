@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // UiAccountMenu in the Keeki Archives look (the same props, events and slot as vex-ui's VxAccountMenu). Signed out,
 // "Sign in" (greyed out when sign-in is off); signed in, the name opens a menu: `note`, then the app's items
-// (default slot), then "Sign out".
+// (default slot), then "Sign out everywhere" (as VxAccountMenu; the app always signs out everywhere).
 import { initials } from '@vex/ui/utils'
 import KButton from './KButton.vue'
 import KMenuItem from './KMenuItem.vue'
@@ -29,7 +29,7 @@ const emit = defineEmits<{ signIn: []; signOut: [] }>()
     <template #default="{ close }">
       <div class="k-eyebrow head">{{ note }}</div>
       <slot :close="close"></slot>
-      <KMenuItem @click="close(), emit('signOut')">Sign out</KMenuItem>
+      <KMenuItem @click="close(), emit('signOut')">Sign out everywhere</KMenuItem>
     </template>
   </KPopover>
   <KButton
