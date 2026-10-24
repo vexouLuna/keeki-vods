@@ -29,6 +29,8 @@
   --k-info: #8fb7d9;
   --k-ok: #8cc084;
   --k-warn: #e8a24a;
+  /* Amber between warn and bad: worse than degraded, not yet down (vex-ui's --vx-caution). */
+  --k-caution: #e5834f;
   --k-bad: #e0645a;
   --k-shadow: 0 10px 30px rgb(0 0 0 / 0.6);
 
@@ -217,6 +219,7 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-status.is-live .k-status-dot { background: var(--k-bad); box-shadow: 0 0 0 3px color-mix(in srgb, var(--k-bad) 30%, transparent); }
 .k-status.is-ok .k-status-dot { background: var(--k-ok); }
 .k-status.is-warn .k-status-dot { background: var(--k-warn); }
+.k-status.is-caution .k-status-dot { background: var(--k-caution); }
 .k-status.is-down .k-status-dot { background: var(--k-bad); }
 .k-progress { width: 100%; height: 6px; background: var(--k-surface-2); overflow: hidden; }
 .k-progress > span { display: block; height: 100%; background: var(--k-accent); transition: width 0.2s; }
@@ -230,6 +233,7 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-chip.is-accent { border-color: var(--k-accent); color: var(--k-accent); font-weight: 700; }
 .k-chip.is-ok { border-color: var(--k-ok); color: var(--k-ok); font-weight: 700; }
 .k-chip.is-warn { border-color: var(--k-warn); color: var(--k-warn); }
+.k-chip.is-caution { border-color: var(--k-caution); color: var(--k-caution); }
 .k-chip.is-bad { border-color: var(--k-bad); color: var(--k-bad); }
 button.k-chip { cursor: pointer; }
 button.k-chip:hover { border-color: var(--k-muted); }
@@ -342,6 +346,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
   --vods-info: var(--k-info);
   --vods-ok: var(--k-ok);
   --vods-warn: var(--k-warn);
+  --vods-caution: var(--k-caution);
   --vods-bad: var(--k-bad);
   --vods-ring: var(--k-accent);
   --vods-hover: var(--k-surface-2);
