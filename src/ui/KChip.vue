@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // A small boxed label. `k` is a "key value" chip's key ("streamed Mon 5 Oct"); `clickable` makes it a toggle.
 withDefaults(
-  defineProps<{ tone?: 'default' | 'accent' | 'ok' | 'warn' | 'bad'; clickable?: boolean; active?: boolean; k?: string }>(),
+  defineProps<{ tone?: 'default' | 'accent' | 'ok' | 'warn' | 'caution' | 'bad'; clickable?: boolean; active?: boolean; k?: string }>(),
   { tone: 'default', clickable: false, active: false },
 )
 defineEmits<{ click: [e: MouseEvent] }>()

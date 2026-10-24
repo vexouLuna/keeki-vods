@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// A coloured dot for a state (live, ok, warn, down, off), with its text in the slot or `label`.
-withDefaults(defineProps<{ status?: 'live' | 'ok' | 'warn' | 'down' | 'off'; label?: string }>(), { status: 'off' })
+// A coloured dot for a state (live, ok, warn, caution, down, off), with its text in the slot or `label`.
+withDefaults(defineProps<{ status?: 'live' | 'ok' | 'warn' | 'caution' | 'down' | 'off'; label?: string }>(), { status: 'off' })
 </script>
 
 <template>
