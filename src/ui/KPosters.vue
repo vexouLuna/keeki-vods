@@ -21,7 +21,8 @@ const extra = computed(() => all.value.length - shown.value.length)
 </script>
 
 <template>
-  <span class="posters" :class="`is-${mode}`" :style="{ '--pw': `${size}px` }" :title="all.map((g) => g.name).join(' · ')">
+  <!-- k-posters, not "posters": a vods-core component's scoped .posters would land on this root too. -->
+  <span class="k-posters" :class="`is-${mode}`" :style="{ '--pw': `${size}px` }" :title="all.map((g) => g.name).join(' · ')">
     <span v-for="g in shown" :key="g.name" class="poster" :style="{ '--c': colorOf(g) }">
       <img v-if="g.image" :src="g.image" :alt="g.name" loading="lazy" />
       <KNoPoster v-else :name="g.name" />
@@ -31,7 +32,7 @@ const extra = computed(() => all.value.length - shown.value.length)
 </template>
 
 <style scoped>
-.posters { display: inline-flex; align-items: center; flex: none; }
+.k-posters { display: inline-flex; align-items: center; flex: none; }
 .poster {
   position: relative; display: block; flex: none; width: var(--pw); aspect-ratio: 3 / 4; overflow: hidden;
   background: var(--c);
