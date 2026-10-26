@@ -396,16 +396,16 @@ button.k-chip:hover { border-color: var(--k-muted); }
    buttons beside Watch are outlined marquee ones. */
 .bar > .filters .k-btn:not(.is-icon) { font-family: var(--k-display); font-weight: 900; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
 .bar > .filters .k-btn:not(.is-icon)[aria-pressed='true'] { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
-.more > .k-btn, .latest .actions > .k-btn:not(.is-primary), .empty .actions > .k-btn:not(.is-primary), a.k-btn.see-all {
+.more > .k-btn, .latest .actions > .k-btn:not(.is-primary), .live.vods-panel .actions > .k-btn:not(.is-primary), .empty .actions > .k-btn:not(.is-primary), a.k-btn.see-all {
   background: transparent; font-family: var(--k-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .more > .k-btn, a.k-btn.see-all { border-color: var(--k-accent); color: var(--k-accent); }
 a.k-btn.see-all:hover { background: transparent; color: var(--k-accent); border-color: var(--k-accent); filter: brightness(1.15); }
 
-/* The latest broadcast is a strip of film (sprocket holes along both edges) with the title on a board under the
-   picture. */
-.latest.vods-panel {
+/* The latest broadcast, or the live stream in its place, is a strip of film (sprocket holes along both edges); the
+   latest's title sits on a board under the picture. */
+.latest.vods-panel, .live.vods-panel {
   --hole: linear-gradient(90deg, transparent 3px, var(--k-film-hole) 3px 13px, transparent 13px);
   padding-block: 28px; border: 0;
   background: var(--hole) 8px 6px / 16px 10px repeat-x, var(--hole) 8px calc(100% - 6px) / 16px 10px repeat-x, var(--k-film);
