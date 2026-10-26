@@ -14,6 +14,8 @@ export const site: VodsAppOptions['site'] = {
   id: 'keekivods',
   name: 'Keeki Archives',
   twitchUrl: 'https://twitch.tv/keeki_dechu',
+  // Most played hangs its posters in a row on the wall, as a cinema does (theme.css dresses it).
+  mostPlayed: 'wall',
 }
 
 /**
