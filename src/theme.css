@@ -239,6 +239,42 @@ button.k-chip { cursor: pointer; }
 button.k-chip:hover { border-color: var(--k-muted); }
 .k-chip.is-active { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
 
+/* KTagInput: chips and a text input in one box; the options list is a KPopover panel. */
+.k-tag-field { display: flex; flex-direction: column; gap: 5px; width: 100%; min-width: 0; }
+.k-tag-pop { display: block; width: 100%; }
+.k-tag-input {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px; width: 100%; min-height: var(--k-control);
+  padding: 3px 6px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel);
+  cursor: text;
+}
+.k-tag-input:focus-within { border-color: var(--k-muted); }
+.k-tag-input.is-invalid, .k-tag-input.is-invalid:focus-within { border-color: var(--k-bad); }
+.k-tag-input.is-disabled { opacity: 0.45; cursor: default; }
+/* `contents` keeps the input on the chips' last row; role="list" on the <ul> keeps its list semantics. */
+.k-tag-chips { display: contents; list-style: none; }
+.k-tag-chips > li { display: inline-flex; min-width: 0; max-width: 100%; }
+.k-tag { max-width: 100%; min-height: 22px; padding-right: 2px; }
+.k-tag.is-locked { padding-right: 7px; }
+.k-tag.is-marked { border-color: var(--k-accent); background: color-mix(in srgb, var(--k-accent) 18%, transparent); }
+.k-tag-lock { font-size: 9px; opacity: 0.7; }
+.k-tag-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.k-tag-x {
+  display: inline-grid; place-items: center; width: 18px; height: 18px; padding: 0; border: 0;
+  border-radius: var(--k-radius); background: none; color: var(--k-muted); font-size: 10px; cursor: pointer;
+}
+.k-tag-x:hover:not(:disabled), .k-tag-x:focus-visible { background: var(--k-surface-2); color: var(--k-ink); }
+.k-tag-x:focus-visible { outline-offset: 0; }
+.k-tag-x:disabled { cursor: default; }
+.k-tag-text {
+  flex: 1 1 80px; min-width: 80px; height: calc(var(--k-control) - 8px); padding: 0 4px; border: 0; background: none;
+  color: var(--k-ink); font: inherit; font-size: 13px;
+}
+/* The box shows focus (:focus-within), so not the input as well. */
+.k-tag-input .k-tag-text:focus-visible { outline: none; }
+.k-tag-text::placeholder { color: var(--k-muted); }
+.k-tag-text:disabled { cursor: default; }
+.k-menu-item.is-active { background: var(--k-surface-2); }
+
 /* ---- overlays ---- */
 .vods-pop, .k-pop {
   position: fixed; z-index: 1000; overflow-y: auto; overscroll-behavior: contain; padding: 6px;
@@ -469,4 +505,10 @@ article.card > .text .title {
 @container (max-width: 480px) { .group > .wall { --gap: 16px; padding: 22px 12px 14px; } }
 @media (prefers-reduced-motion: reduce) {
   .wall > li::before, .wall .frame .poster, .wall .frame .poster img { transition: none; }
+}
+
+/* Read by screen readers, not shown. */
+.k-sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%);
+  white-space: nowrap; border: 0;
 }

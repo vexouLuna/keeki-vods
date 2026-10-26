@@ -10,6 +10,25 @@ export interface Option<T extends string | number = string> {
   title?: string
 }
 
+/** One choice in a KTagInput. */
+export interface TagOption {
+  value: string
+  label?: string
+  /** A CSS colour, shown as a dot on the option and its chip. */
+  color?: string
+  /** Secondary text on the right of the option. */
+  hint?: string
+}
+
+/** A KTagInput chip that can't be removed and isn't in the model. */
+export interface LockedTag {
+  value: string
+  label?: string
+  tone?: 'default' | 'accent' | 'ok' | 'warn' | 'caution' | 'bad'
+  /** Why it's locked: the chip's tooltip. */
+  title?: string
+}
+
 /** One column of a KTable. */
 export interface TableColumn {
   key: string
