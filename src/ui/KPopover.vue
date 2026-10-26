@@ -14,6 +14,8 @@ const props = withDefaults(
     /** Never taller than this (px), even with room. */
     cap?: number
     role?: 'menu' | 'dialog' | 'listbox'
+    /** The panel's id, for a trigger's aria-controls. */
+    panelId?: string
   }>(),
   { prefer: 'down', align: 'left', width: '260px', cap: 420, role: 'menu' },
 )
@@ -101,6 +103,7 @@ defineExpose({ open: show, close, toggle, reposition })
           bottom: pos?.bottom !== undefined ? `${pos.bottom}px` : undefined,
           visibility: pos ? undefined : 'hidden',
         }"
+        :id="panelId"
         :role="role"
       >
         <slot :close="close"></slot>
