@@ -18,7 +18,7 @@ its design: from `@vex/ui` it takes only the headless logic (`/utils`, `/account
 
 Pages: Home (the latest VOD on the screen, the series now running, the most played games), `/vods` and
 `/playthroughs` (filters and a card grid), the watch page (`/vods/:id`, with the YouTube parts on one timeline and
-the chat replay) and `/games/:id`. Manage (`/manage`, archive admins only, through the worker's Twitch sign-in) is
+the chat replay). Manage (`/manage`, archive admins only, through the worker's Twitch sign-in) is
 the worker's dashboard in this UI: overview, jobs, VODs (with synthetic VODs), storage, settings, tags and the audit
 log, all on vods-core's `/kit` admin client.
 
