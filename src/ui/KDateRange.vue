@@ -44,9 +44,9 @@ function apply(days: number) {
 </template>
 
 <style scoped>
-.range { display: flex; flex-direction: column; gap: 10px; }
-.row { display: flex; align-items: center; gap: 6px; }
+.range { display: flex; flex-direction: column; gap: var(--k-space-4); }
+.row { display: flex; align-items: center; gap: var(--k-space-2); }
 .end { flex: 1 1 0; }
-.end :deep(.k-input) { padding: 0 8px; font-size: 13px; }
-.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.end :deep(.k-input) { padding: 0 8px; font-size: var(--k-text-sm); }
+.presets { display: flex; flex-wrap: wrap; gap: var(--k-space-2); }
 </style>

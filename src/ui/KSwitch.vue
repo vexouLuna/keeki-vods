@@ -12,7 +12,7 @@ const model = defineModel<boolean>({ default: false })
 </template>
 
 <style scoped>
-.check { display: inline-flex; align-items: center; gap: 10px; min-height: 28px; cursor: pointer; font-size: 13px; }
+.check { display: inline-flex; align-items: center; gap: var(--k-space-4); min-height: var(--k-control-sm); cursor: pointer; font-size: var(--k-text-sm); }
 .check.disabled { opacity: 0.5; cursor: default; }
 .switch {
   position: relative; flex: none; width: 38px; height: 22px; padding: 0; border: 1px solid var(--k-line);

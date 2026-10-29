@@ -20,6 +20,6 @@ const model = defineModel<string>({ default: '' })
 </template>
 
 <style scoped>
-.textarea { height: auto; padding: 6px 8px; resize: vertical; font: inherit; font-size: 13px; }
+.textarea { height: auto; padding: 6px 8px; resize: vertical; font: inherit; font-size: var(--k-text-sm); }
 .textarea[aria-invalid='true'] { border-color: var(--k-bad); }
 </style>

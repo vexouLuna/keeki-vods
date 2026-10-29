@@ -39,7 +39,7 @@ const extra = computed(() => all.value.length - shown.value.length)
 }
 .poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .poster::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--c); }
-.is-row { gap: 4px; }
+.is-row { gap: var(--k-space-1); }
 
 /* Each in a dark frame with a lit edge, the way posters hang in their cases. */
 .is-bill { gap: 3px; padding: 3px; background: var(--k-frame); box-shadow: 0 4px 12px rgb(0 0 0 / 0.6); }

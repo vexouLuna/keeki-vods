@@ -42,6 +42,7 @@ import KTagInput from './KTagInput.vue'
 import KTextarea from './KTextarea.vue'
 import KTooltip from './KTooltip.vue'
 
+export { default as KIcon } from './KIcon.vue'
 export { default as KNoPicture } from './KNoPicture.vue'
 export type { AccountUser, LockedTag, NavItem, Option, SortState, TableColumn, TagOption } from './types'
 

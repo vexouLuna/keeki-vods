@@ -68,17 +68,17 @@ withDefaults(defineProps<{ nav: NavItem[]; fill?: boolean; header?: boolean; sky
 .head { border-bottom: 1px solid var(--k-line); }
 .head-in {
   max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: space-between; gap: 8px 16px;
+  justify-content: space-between; gap: var(--k-space-3) 16px;
 }
 .is-fill .head-in { max-width: none; }
 .brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 12px; margin-right: auto; color: var(--k-ink); text-decoration: none; }
 .name { font-family: var(--k-display); font-weight: 900; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1; }
-.jp { font-size: 13px; color: var(--k-muted); }
+.jp { font-size: var(--k-text-sm); color: var(--k-muted); }
 .nav {
-  display: flex; flex-wrap: wrap; gap: 4px; font-family: var(--k-display); font-weight: 700;
-  font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+  display: flex; flex-wrap: wrap; gap: var(--k-space-1); font-family: var(--k-display); font-weight: 700;
+  font-size: var(--k-text-lg); letter-spacing: 0.06em; text-transform: uppercase;
 }
-.end { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-left: auto; }
+.end { display: flex; flex-wrap: wrap; align-items: center; gap: var(--k-space-2) 12px; margin-left: auto; }
 .nav a { display: block; padding: 6px 10px; color: var(--k-ink); text-decoration: none; }
 .nav a:hover { color: var(--k-accent); }
 .nav a.on { color: var(--k-accent); }
@@ -92,7 +92,7 @@ withDefaults(defineProps<{ nav: NavItem[]; fill?: boolean; header?: boolean; sky
 .foot { border-top: 1px solid var(--k-line); }
 .foot-in {
   max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between;
-  gap: 12px; font-size: 13px; color: var(--k-muted);
+  gap: var(--k-space-5); font-size: var(--k-text-sm); color: var(--k-muted);
 }
 @media (max-width: 560px) {
   .head-in, .main, .foot-in { padding-left: 16px; padding-right: 16px; }

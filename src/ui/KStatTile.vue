@@ -29,9 +29,9 @@ withDefaults(
 </template>
 
 <style scoped>
-.tile { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; align-items: flex-start; }
-.main { display: flex; align-items: center; gap: 8px; font-size: 16px; }
+.tile { display: flex; flex-direction: column; gap: var(--k-space-2); padding: 14px 16px; align-items: flex-start; }
+.main { display: flex; align-items: center; gap: var(--k-space-3); font-size: 16px; }
 .link { color: var(--k-accent); text-decoration: underline; text-underline-offset: 2px; }
 .link:hover { color: var(--k-ink); }
-.small { font-size: 12px; }
+.small { font-size: var(--k-text-xs); }
 </style>

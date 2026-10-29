@@ -35,7 +35,7 @@ const status = computed(() => (props.count ? `${props.count} unsaved ${props.cou
 
 <style scoped>
 .savebar {
-  position: sticky; bottom: 12px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  position: sticky; bottom: 12px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: var(--k-space-3);
   padding: 10px 14px; background: var(--k-bg);
 }
 .savebar.is-on { box-shadow: 0 0 0 1px var(--k-accent); }

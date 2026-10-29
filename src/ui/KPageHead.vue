@@ -13,9 +13,9 @@ defineProps<{ title: string; eyebrow?: string }>()
 </template>
 
 <style scoped>
-.head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 16px; margin-bottom: 20px; }
+.head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--k-space-1) 16px; margin-bottom: 20px; }
 .head > .k-eyebrow, .text { flex-basis: 100%; }
 .title { font-size: 28px; margin: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
-.actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.text { font-size: 14px; }
+.actions { display: flex; gap: var(--k-space-3); flex-wrap: wrap; }
+.text { font-size: var(--k-text-md); }
 </style>
