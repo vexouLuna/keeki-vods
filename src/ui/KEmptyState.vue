@@ -16,11 +16,11 @@ defineProps<{ title: string; text?: string; code?: string }>()
 
 <style scoped>
 .empty {
-  display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 24px 44px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: var(--k-space-5); padding: 0 24px 44px; text-align: center;
   background: var(--k-board); border: 1px solid var(--k-line);
 }
 .empty .k-sprockets { align-self: stretch; margin: 0 -24px 24px; }
 .title { font-size: 30px; color: var(--k-board-ink); }
 .text { margin: 0; max-width: 46ch; }
-.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 6px; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--k-space-3); margin-top: 6px; }
 </style>

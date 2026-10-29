@@ -22,7 +22,7 @@ const model = defineModel<T>()
 <style scoped>
 .k-segmented { display: inline-flex; border: 1px solid var(--k-line); }
 .k-segmented button {
-  height: var(--k-control); padding: 0 11px; border: 0; background: transparent; color: var(--k-ink); font-size: 13px;
+  height: var(--k-control); padding: 0 11px; border: 0; background: transparent; color: var(--k-ink); font-size: var(--k-text-sm);
   cursor: pointer;
 }
 .k-segmented button[aria-checked='true'] { background: var(--k-accent); color: var(--k-accent-ink); font-weight: 700; }

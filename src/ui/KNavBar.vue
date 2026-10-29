@@ -27,11 +27,11 @@ defineProps<{ links: NavItem[]; label: string; title?: string }>()
 </template>
 
 <style scoped>
-.navbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 8px 12px; margin: 0 0 20px; }
+.navbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--k-space-3) 14px; padding: 8px 12px; margin: 0 0 20px; }
 .title { margin: 0; }
 .links { display: flex; flex-wrap: wrap; gap: 2px; }
-.link { padding: 5px 10px; border-radius: var(--k-radius-sm); color: var(--k-muted); text-decoration: none; font-size: 13px; }
+.link { padding: 5px 10px; border-radius: var(--k-radius-sm); color: var(--k-muted); text-decoration: none; font-size: var(--k-text-sm); }
 .link:hover { color: var(--k-ink); background: var(--k-surface-2); }
 .link.is-current { color: var(--k-accent); background: var(--k-surface-2); }
-.trail { margin-left: auto; min-width: 0; max-width: 100%; font-size: 12px; }
+.trail { margin-left: auto; min-width: 0; max-width: 100%; font-size: var(--k-text-xs); }
 </style>

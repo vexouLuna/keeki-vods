@@ -55,6 +55,6 @@ defineEmits<{ retry: [] }>()
 </template>
 
 <style scoped>
-.rows { display: flex; flex-direction: column; gap: 12px; }
+.rows { display: flex; flex-direction: column; gap: var(--k-space-5); }
 .stale { margin-bottom: 16px; }
 </style>

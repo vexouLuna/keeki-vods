@@ -16,13 +16,13 @@ withDefaults(defineProps<{ tone?: 'info' | 'ok' | 'warn' | 'error'; title?: stri
 <style scoped>
 .callout {
   --c: var(--k-info);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 14px; background: var(--k-panel);
-  border: 1px solid var(--k-line); border-left: 4px solid var(--c); font-size: 13px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--k-space-4); padding: 10px 14px; background: var(--k-panel);
+  border: 1px solid var(--k-line); border-left: 4px solid var(--c); font-size: var(--k-text-sm);
 }
 .is-ok { --c: var(--k-ok); }
 .is-warn { --c: var(--k-warn); }
 .is-error { --c: var(--k-bad); }
 .body { flex: 1 1 240px; min-width: 0; overflow-wrap: anywhere; }
 .title { font-weight: 700; color: var(--c); }
-.actions { display: flex; gap: 8px; }
+.actions { display: flex; gap: var(--k-space-3); }
 </style>

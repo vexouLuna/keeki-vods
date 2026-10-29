@@ -40,7 +40,7 @@ function typed(e: Event) {
 </template>
 
 <style scoped>
-.stepper { display: inline-flex; align-items: center; gap: 4px; }
-.stepper .k-input { width: 64px; height: var(--k-control-sm); padding: 0 6px; text-align: center; font-size: 13px; -moz-appearance: textfield; appearance: textfield; }
+.stepper { display: inline-flex; align-items: center; gap: var(--k-space-1); }
+.stepper .k-input { width: 64px; height: var(--k-control-sm); padding: 0 6px; text-align: center; font-size: var(--k-text-sm); -moz-appearance: textfield; appearance: textfield; }
 .stepper .k-input::-webkit-inner-spin-button { display: none; }
 </style>

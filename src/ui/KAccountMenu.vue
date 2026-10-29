@@ -46,7 +46,7 @@ const emit = defineEmits<{ signIn: []; signOut: [] }>()
 .who {
   display: inline-flex; align-items: center; gap: 7px; max-width: 220px; height: var(--k-control-sm); padding: 0 9px 0 3px;
   border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel); color: var(--k-ink);
-  font-size: 13px; cursor: pointer;
+  font-size: var(--k-text-sm); cursor: pointer;
 }
 .who:hover, .who.open { border-color: var(--k-accent); }
 .pic {

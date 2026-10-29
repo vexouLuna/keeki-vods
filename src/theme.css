@@ -22,6 +22,9 @@
   /* Film leader, where a VOD has no thumbnail (KNoPicture). */
   --k-leader: #2a2622;
   --k-leader-line: #4a433c;
+  /* The gorilla playhead's fur and ink (src/art/SeekMarker.vue). */
+  --k-fur: #d3bc5f;
+  --k-art-ink: #4d4d4d;
   --k-accent-ink: #080707;
   /* Raised surfaces (menus, hovered rows) and the states. */
   --k-surface: #181614;
@@ -40,16 +43,35 @@
   --k-control: 34px;
   --k-control-sm: 28px;
 
+  /* Type and spacing scales the components share. */
+  --k-text-xs: 12px;
+  --k-text-sm: 13px;
+  --k-text-md: 14px;
+  --k-text-lg: 15px;
+  --k-space-1: 4px;
+  --k-space-2: 6px;
+  --k-space-3: 8px;
+  --k-space-4: 10px;
+  --k-space-5: 12px;
+
   --k-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
   --k-body: 'IBM Plex Sans JP', 'Hiragino Sans', system-ui, sans-serif;
   --k-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* Touch and narrow screens: small controls grow to the full control height and the small hit areas to 32px, so every
+   tap target is at least 32px (the way vex-ui does it). Overlays teleported to <body> follow, being on :root. */
+@media (max-width: 700px), (pointer: coarse) {
+  :root { --k-control-sm: var(--k-control); }
+  .k-tabs-more { width: 32px; height: 32px; }
+  .k-tag-x { width: 24px; height: 24px; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { background: var(--k-bg); }
 body {
   margin: 0; background: var(--k-bg); color: var(--k-ink);
-  font-family: var(--k-body); font-size: 15px; line-height: 1.5;
+  font-family: var(--k-body); font-size: var(--k-text-lg); line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 a { color: var(--k-accent); }
@@ -64,11 +86,11 @@ img { max-width: 100%; }
   letter-spacing: 0.02em; text-wrap: balance;
 }
 .vods-eyebrow, .k-eyebrow {
-  font-family: var(--k-display); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-family: var(--k-display); font-weight: 700; font-size: var(--k-text-sm); letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--k-muted);
 }
 .k-kicker {
-  font-family: var(--k-display); font-weight: 900; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-sm); letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--k-kicker);
 }
 .vods-mono, .k-mono { font-family: var(--k-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
@@ -82,7 +104,7 @@ img { max-width: 100%; }
 .vods-panel, .k-panel { background: var(--k-panel); border: 1px solid var(--k-line); }
 /* A section's heading: big, with a rule under it. */
 .k-section-head {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--k-space-5);
   padding-bottom: 8px; border-bottom: 2px solid var(--k-ink);
 }
 .k-section-head h2 { margin: 0; font-family: var(--k-display); font-weight: 900; font-size: 28px; line-height: 1; text-transform: uppercase; letter-spacing: 0.03em; }
@@ -104,7 +126,7 @@ img { max-width: 100%; }
 .vods-btn, .k-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: var(--k-control);
   padding: 0 12px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel);
-  color: var(--k-ink); font-family: var(--k-body); font-size: 13px; font-weight: 500; line-height: 1;
+  color: var(--k-ink); font-family: var(--k-body); font-size: var(--k-text-sm); font-weight: 500; line-height: 1;
   text-decoration: none; white-space: nowrap; cursor: pointer; user-select: none;
 }
 .vods-btn:hover:not(:disabled), .k-btn:hover:not(:disabled) { border-color: var(--k-muted); }
@@ -112,18 +134,18 @@ img { max-width: 100%; }
 .k-btn[aria-pressed='true'], .k-btn.is-pressed { border-color: var(--k-accent); color: var(--k-accent); }
 /* The big uppercase ones: Watch (filled) and the outlined marquee buttons. */
 .k-btn.is-primary, .k-btn.is-marquee {
-  font-family: var(--k-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+  font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-lg); letter-spacing: 0.06em; text-transform: uppercase;
 }
 .vods-btn.is-primary, .k-btn.is-primary { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
 .vods-btn.is-primary:hover:not(:disabled), .k-btn.is-primary:hover:not(:disabled) { border-color: var(--k-accent); filter: brightness(1.08); }
 .k-btn.is-marquee { background: transparent; }
 .k-btn.is-marquee.is-accent { border-color: var(--k-accent); color: var(--k-accent); }
-.k-btn.is-filter { font-family: var(--k-display); font-weight: 900; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+.k-btn.is-filter { font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-md); letter-spacing: 0.06em; text-transform: uppercase; }
 .k-btn.is-filter[aria-pressed='true'] { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
 .k-btn.is-ghost { background: transparent; border-color: transparent; }
 .k-btn.is-ghost:hover:not(:disabled) { background: var(--k-surface); border-color: transparent; }
 .k-btn.is-danger { color: var(--k-bad); }
-.vods-btn.is-sm, .k-btn.is-sm { height: var(--k-control-sm); padding: 0 9px; font-size: 12px; gap: 5px; }
+.vods-btn.is-sm, .k-btn.is-sm { height: var(--k-control-sm); padding: 0 9px; font-size: var(--k-text-xs); gap: 5px; }
 .k-btn.is-icon { width: var(--k-control); padding: 0; }
 .k-btn.is-icon.is-sm { width: var(--k-control-sm); }
 .k-btn.is-block { display: flex; width: 100%; }
@@ -144,7 +166,7 @@ img { max-width: 100%; }
 .k-input-clear { margin-right: 6px; }
 .vods-input, .k-input {
   width: 100%; min-width: 0; height: var(--k-control); padding: 0 10px; border: 1px solid var(--k-line);
-  border-radius: var(--k-radius); background: var(--k-panel); color: var(--k-ink); font-size: 13px;
+  border-radius: var(--k-radius); background: var(--k-panel); color: var(--k-ink); font-size: var(--k-text-sm);
 }
 .vods-input::placeholder, .k-input::placeholder { color: var(--k-muted); }
 .k-input[type='search']::-webkit-search-cancel-button { display: none; }
@@ -155,10 +177,10 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 
 /* A labelled field (KField), and a row of them that lines its buttons up with the inputs. */
 .k-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.k-field-label { font-size: 13px; line-height: 18px; font-weight: 700; color: var(--k-ink); }
-.k-field-help { font-size: 12px; color: var(--k-muted); }
-.k-field-error { font-size: 12px; color: var(--k-bad); }
-.k-check { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer; }
+.k-field-label { font-size: var(--k-text-sm); line-height: 18px; font-weight: 700; color: var(--k-ink); }
+.k-field-help { font-size: var(--k-text-xs); color: var(--k-muted); }
+.k-field-error { font-size: var(--k-text-xs); color: var(--k-bad); }
+.k-check { display: inline-flex; align-items: center; gap: var(--k-space-3); font-size: var(--k-text-sm); cursor: pointer; }
 .k-check input { accent-color: var(--k-accent); width: 15px; height: 15px; margin: 0; }
 .k-check.is-disabled { opacity: 0.5; cursor: not-allowed; }
 
@@ -173,7 +195,7 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-tabs::-webkit-scrollbar { display: none; }
 .k-tabs button {
   flex: none; height: var(--k-control); padding: 0 12px; border: 0; background: transparent; color: var(--k-muted);
-  font-family: var(--k-display); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--k-display); font-weight: 700; font-size: var(--k-text-md); letter-spacing: 0.08em; text-transform: uppercase;
   white-space: nowrap; cursor: pointer;
 }
 .k-tabs button:hover { color: var(--k-ink); }
@@ -187,7 +209,7 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-tabs-more {
   position: absolute; top: 50%; translate: 0 -50%; width: 24px; height: 24px; display: grid; place-items: center;
   padding: 0; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel);
-  color: var(--k-ink); font-size: 15px; line-height: 1; cursor: pointer;
+  color: var(--k-ink); font-size: var(--k-text-lg); line-height: 1; cursor: pointer;
 }
 .k-tabs-more:hover { border-color: var(--k-muted); }
 .k-tabs-more.is-left { left: 0; }
@@ -195,10 +217,10 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 
 /* Tables: every column stays; a narrow screen scrolls the table sideways. */
 .k-table-wrap { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--k-line) transparent; }
-.k-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.k-table { width: 100%; border-collapse: collapse; font-size: var(--k-text-sm); }
 .k-table th {
   padding: 7px 12px; border-bottom: 2px solid var(--k-line); text-align: left; color: var(--k-muted);
-  font-family: var(--k-display); font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-family: var(--k-display); font-weight: 700; font-size: var(--k-text-sm); letter-spacing: 0.1em; text-transform: uppercase;
   white-space: nowrap;
 }
 .k-table th.is-sortable { cursor: pointer; user-select: none; }
@@ -225,8 +247,8 @@ textarea.k-input { height: auto; padding: 7px 10px; line-height: 1.45; resize: v
 .k-progress > span { display: block; height: 100%; background: var(--k-accent); transition: width 0.2s; }
 
 .k-chip {
-  display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border: 1px solid var(--k-line);
-  border-radius: var(--k-radius); color: var(--k-ink); font-size: 12px; line-height: 1.3; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: var(--k-space-1); padding: 1px 7px; border: 1px solid var(--k-line);
+  border-radius: var(--k-radius); color: var(--k-ink); font-size: var(--k-text-xs); line-height: 1.3; white-space: nowrap;
   background: transparent;
 }
 .k-chip-key { color: var(--k-muted); }
@@ -243,7 +265,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
 .k-tag-field { display: flex; flex-direction: column; gap: 5px; width: 100%; min-width: 0; }
 .k-tag-pop { display: block; width: 100%; }
 .k-tag-input {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 4px; width: 100%; min-height: var(--k-control);
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--k-space-1); width: 100%; min-height: var(--k-control);
   padding: 3px 6px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-panel);
   cursor: text;
 }
@@ -267,7 +289,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
 .k-tag-x:disabled { cursor: default; }
 .k-tag-text {
   flex: 1 1 80px; min-width: 80px; height: calc(var(--k-control) - 8px); padding: 0 4px; border: 0; background: none;
-  color: var(--k-ink); font: inherit; font-size: 13px;
+  color: var(--k-ink); font: inherit; font-size: var(--k-text-sm);
 }
 /* The box shows focus (:focus-within), so not the input as well. */
 .k-tag-input .k-tag-text:focus-visible { outline: none; }
@@ -282,8 +304,8 @@ button.k-chip:hover { border-color: var(--k-muted); }
   box-shadow: var(--k-shadow); scrollbar-width: thin;
 }
 .k-menu-item {
-  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 32px; padding: 5px 8px; border: 0;
-  border-radius: var(--k-radius); background: transparent; color: var(--k-ink); font-size: 13px; text-align: left;
+  display: flex; align-items: center; gap: var(--k-space-4); width: 100%; min-height: 32px; padding: 5px 8px; border: 0;
+  border-radius: var(--k-radius); background: transparent; color: var(--k-ink); font-size: var(--k-text-sm); text-align: left;
   text-decoration: none; cursor: pointer;
 }
 .k-menu-item:hover:not(:disabled), .k-menu-item:focus-visible { background: var(--k-surface-2); }
@@ -296,7 +318,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
   position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; padding: 16px; background: rgb(0 0 0 / 0.72);
 }
 .k-dialog {
-  max-height: calc(100vh - 32px); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 18px;
+  max-height: calc(100vh - 32px); overflow-y: auto; display: flex; flex-direction: column; gap: var(--k-space-4); padding: 18px;
   background: var(--k-surface); border: 1px solid var(--k-line); border-top: 3px solid var(--k-accent);
   box-shadow: var(--k-shadow);
 }
@@ -304,12 +326,12 @@ button.k-chip:hover { border-color: var(--k-muted); }
 .k-dialog-title {
   font-family: var(--k-display); font-weight: 900; font-size: 22px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase;
 }
-.k-dialog-body { color: var(--k-muted); font-size: 14px; }
-.k-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.k-dialog-body { color: var(--k-muted); font-size: var(--k-text-md); }
+.k-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: var(--k-space-3); margin-top: 4px; }
 
 .k-tooltip-bubble {
   position: fixed; z-index: 1100; max-width: 280px; padding: 4px 8px; border-radius: var(--k-radius);
-  background: var(--k-board-ink); color: var(--k-bg); font-size: 12px; font-weight: 500; line-height: 1.35;
+  background: var(--k-board-ink); color: var(--k-bg); font-size: var(--k-text-xs); font-weight: 500; line-height: 1.35;
   pointer-events: none;
 }
 
@@ -322,7 +344,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
 @keyframes k-shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
 .k-ph {
   display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--k-thumb);
-  color: var(--k-muted); font-size: 12px; text-align: center;
+  color: var(--k-muted); font-size: var(--k-text-xs); text-align: center;
 }
 .k-ph.is-round { border-radius: 50%; }
 /* No thumbnail (KNoPicture): a frame of film leader, lit in the middle and dark at the edges. */
@@ -394,10 +416,10 @@ button.k-chip:hover { border-color: var(--k-muted); }
 /* The app's pages in the cinema's dress. Only colours, type and frames here: the layout and copy are vods-core's. */
 /* Filters on the VOD list (All, game, tag, date) are the uppercase filter buttons; Load more and the secondary
    buttons beside Watch are outlined marquee ones. */
-.bar > .filters .k-btn:not(.is-icon) { font-family: var(--k-display); font-weight: 900; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+.bar > .filters .k-btn:not(.is-icon) { font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-md); letter-spacing: 0.06em; text-transform: uppercase; }
 .bar > .filters .k-btn:not(.is-icon)[aria-pressed='true'] { background: var(--k-accent); border-color: var(--k-accent); color: var(--k-accent-ink); }
 .more > .k-btn, .latest .actions > .k-btn:not(.is-primary), .live.vods-panel .actions > .k-btn:not(.is-primary), .empty .actions > .k-btn:not(.is-primary), a.k-btn.see-all {
-  background: transparent; font-family: var(--k-display); font-weight: 900; font-size: 15px; letter-spacing: 0.06em;
+  background: transparent; font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-lg); letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .more > .k-btn, a.k-btn.see-all { border-color: var(--k-accent); color: var(--k-accent); }
@@ -441,7 +463,7 @@ article.card > .text .title {
 }
 .hand .card > .name {
   padding: 5px 6px 6px; background: var(--k-board); color: var(--k-board-ink);
-  font-family: var(--k-display); font-size: 13px; font-weight: 700; line-height: 1.1; text-transform: uppercase;
+  font-family: var(--k-display); font-size: var(--k-text-sm); font-weight: 700; line-height: 1.1; text-transform: uppercase;
 }
 /* A game with no box art: the blank poster in its case, its name set on it (as KNoPoster), above the board. */
 .hand .card > .k-ph {
@@ -453,7 +475,7 @@ article.card > .text .title {
   outline: 1px solid var(--k-leader-line); outline-offset: 3px; pointer-events: none;
 }
 .hand .card > .k-ph > span {
-  padding: 0 16%; font-family: var(--k-display); font-weight: 900; font-size: 15px; line-height: 0.95; letter-spacing: 0.04em;
+  padding: 0 16%; font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-lg); line-height: 0.95; letter-spacing: 0.04em;
   text-transform: uppercase; text-wrap: balance; color: var(--k-board-ink);
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow-wrap: anywhere; text-overflow: clip;
 }
@@ -475,7 +497,7 @@ article.card > .text .title {
   background: radial-gradient(ellipse 50% 100% at 50% 0, rgb(255 238 205 / 0.13), transparent 75%);
   opacity: 0.7; transition: opacity 200ms ease;
 }
-.wall .frame { position: relative; gap: 10px; }
+.wall .frame { position: relative; gap: var(--k-space-4); }
 .wall .frame .poster {
   padding: 6px; border: 1px solid var(--k-leader-line); border-radius: var(--k-radius); background: var(--k-frame);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--k-accent) 30%, transparent), 0 10px 22px rgb(0 0 0 / 0.65);
@@ -486,7 +508,7 @@ article.card > .text .title {
   height: 100%; padding: 0 12%; background: radial-gradient(ellipse at center, var(--k-leader) 0%, var(--k-thumb) 85%);
 }
 .wall .frame .poster > .k-ph > span {
-  font-family: var(--k-display); font-weight: 900; font-size: 15px; line-height: 0.95; letter-spacing: 0.04em;
+  font-family: var(--k-display); font-weight: 900; font-size: var(--k-text-lg); line-height: 0.95; letter-spacing: 0.04em;
   text-transform: uppercase; text-wrap: balance; color: var(--k-board-ink); overflow-wrap: anywhere;
 }
 /* Pointed at, the case lights up: a lit edge and its glow on the wall. */
@@ -498,7 +520,7 @@ article.card > .text .title {
 .wall .frame:hover .poster img, .wall .frame:focus-visible .poster img { filter: brightness(1.06); }
 .wall .plaque { padding: 5px 6px 6px; background: var(--k-board); border: 1px solid var(--k-line); }
 .wall .plaque-name {
-  font-family: var(--k-display); font-size: 13px; font-weight: 700; line-height: 1.1; text-transform: uppercase;
+  font-family: var(--k-display); font-size: var(--k-text-sm); font-weight: 700; line-height: 1.1; text-transform: uppercase;
   color: var(--k-board-ink);
 }
 .wall .plaque-count { color: var(--k-kicker); }

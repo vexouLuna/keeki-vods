@@ -47,5 +47,5 @@ function confirm() {
 </template>
 
 <style scoped>
-.type { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; color: var(--k-ink); }
+.type { display: flex; flex-direction: column; gap: var(--k-space-2); margin-top: 12px; color: var(--k-ink); }
 </style>
