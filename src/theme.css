@@ -22,6 +22,9 @@
   /* Film leader, where a VOD has no thumbnail (KNoPicture). */
   --k-leader: #2a2622;
   --k-leader-line: #4a433c;
+  /* The gorilla playhead's fur and ink (src/art/SeekMarker.vue). */
+  --k-fur: #d3bc5f;
+  --k-art-ink: #4d4d4d;
   --k-accent-ink: #080707;
   /* Raised surfaces (menus, hovered rows) and the states. */
   --k-surface: #181614;

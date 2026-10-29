@@ -113,7 +113,7 @@ const style = computed(() => ({
 <style scoped>
 .marker {
   --seek-accent: var(--k-accent);
-  --seek-fur: #d3bc5f;
+  --seek-fur: var(--k-fur);
   display: block;
   overflow: visible;
 }
@@ -123,7 +123,7 @@ const style = computed(() => ({
 .f-game { fill: var(--seek-fur); }
 .s-game { stroke: var(--seek-fur); }
 .f-game-light { fill: color-mix(in oklab, var(--seek-fur), white 45%); }
-.f-ink { fill: #4d4d4d; }
+.f-ink { fill: var(--k-art-ink); }
 
 /* Only the current mood shows, its two frames taking turns. */
 .frame { visibility: hidden; }
