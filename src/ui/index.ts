@@ -14,6 +14,7 @@ import KDateRange from './KDateRange.vue'
 import KDialog from './KDialog.vue'
 import KEmptyState from './KEmptyState.vue'
 import KField from './KField.vue'
+import KIcon from './KIcon.vue'
 import KInput from './KInput.vue'
 import KKbd from './KKbd.vue'
 import KLink from './KLink.vue'
@@ -60,6 +61,7 @@ const components = {
   Dialog: KDialog,
   EmptyState: KEmptyState,
   Field: KField,
+  Icon: KIcon,
   Input: KInput,
   Kbd: KKbd,
   Link: KLink,
