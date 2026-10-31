@@ -410,6 +410,7 @@ button.k-chip:hover { border-color: var(--k-muted); }
   --vods-hover: var(--k-surface-2);
   --vods-radius: var(--k-radius);
   --vods-radius-sm: var(--k-radius-sm);
+  --vods-radius-group: var(--k-radius-sm);
   --vods-font-mono: var(--k-mono);
 }
 
