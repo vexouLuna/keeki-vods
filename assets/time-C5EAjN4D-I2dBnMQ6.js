@@ -1,0 +1,1 @@
+const e=n=>n<60?`${n}s`:n<3600?`${Math.floor(n/60)} min`:`${Math.floor(n/3600)} h`;function t(n,a=Date.now()){if(!n)return"—";const r=typeof n=="number"?n:Date.parse(n);if(Number.isNaN(r))return"—";const o=Math.round((a-r)/1e3);return o<0?`in ${e(-o)}`:o<86400?`${e(o)} ago`:new Date(r).toISOString().slice(0,10)}export{t as a};
