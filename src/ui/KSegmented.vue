@@ -20,7 +20,8 @@ const model = defineModel<T>()
 </template>
 
 <style scoped>
-.k-segmented { display: inline-flex; border: 1px solid var(--k-line); }
+/* Wraps rather than running out of a narrow box (the player settings' speeds). */
+.k-segmented { display: inline-flex; flex-wrap: wrap; max-width: 100%; border: 1px solid var(--k-line); }
 .k-segmented button {
   height: var(--k-control); padding: 0 11px; border: 0; background: transparent; color: var(--k-ink); font-size: var(--k-text-sm);
   cursor: pointer;
