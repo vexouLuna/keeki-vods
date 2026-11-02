@@ -16,6 +16,8 @@ export const site: VodsAppOptions['site'] = {
   twitchUrl: 'https://twitch.tv/keeki_dechu',
   // Most played hangs its posters in a row on the wall, as a cinema does (theme.css dresses it).
   mostPlayed: 'wall',
+  // The channel keeps one stream title for weeks, so cards lead with the date and games (viewers can switch back).
+  vodTitle: 'generated',
 }
 
 /**
