@@ -42,7 +42,6 @@
   --k-frame-radius: 6px;
   --k-control: 34px;
   --k-control-sm: 28px;
-  --k-control-lg: 40px; /* the player's control bar */
 
   /* Type and spacing scales the components share. */
   --k-text-xs: 12px;
@@ -414,12 +413,14 @@ button.k-chip:hover { border-color: var(--k-muted); }
   --vods-radius-sm: var(--k-radius-sm);
   --vods-radius-group: var(--k-radius-sm);
   --vods-font-mono: var(--k-mono);
-  --vods-player-heading: var(--k-text-xl);
-  --vods-player-text: var(--k-text-sm);
-  --vods-player-time: var(--k-text-md);
+  /* The watch page's bar is sized like vods.vexoul.net's (vods-core's player tokens), so it fits a phone's row the
+     same way; only its colours and fonts are Keeki's. */
+  --vods-player-heading: 18px;
+  --vods-player-text: var(--k-text-xs);
+  --vods-player-time: var(--k-text-sm);
 }
-/* The watch page's control bar: bigger buttons than the rest of the site (its menus are teleported, so stay as they are). */
-.vods-player-controls { --k-control: var(--k-control-lg); }
+/* The watch page's control bar: vods-core's button height (its menus are teleported, so stay as they are). */
+.vods-player-controls { --k-control: var(--vods-player-control); }
 
 /* The app's pages in the cinema's dress. Only colours, type and frames here: the layout and copy are vods-core's. */
 /* Filters on the VOD list (All, game, tag, date) are the uppercase filter buttons; Load more and the secondary
