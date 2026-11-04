@@ -8,7 +8,8 @@ import { adminMock } from '@vex/vods-core/dev'
 /** The commit this build comes from, shown in the footer (empty outside a git checkout). */
 function commit(): string {
   try {
-    return execSync('git rev-parse HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim()
+    // In this repo, not process.cwd(): `vite <dir>` can be started from another folder.
+    return execSync('git rev-parse HEAD', { cwd: fileURLToPath(new URL('.', import.meta.url)), stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim()
   } catch {
     return process.env.GITHUB_SHA ?? ''
   }
