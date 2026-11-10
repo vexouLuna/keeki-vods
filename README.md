@@ -1,5 +1,13 @@
 # keekivods.vexoul.net
 
+<!-- conventions:begin: synced from vexouLuna/conventions; edit it there, then run `conventions sync` -->
+[![CI](https://github.com/vexouLuna/keeki-vods/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vexouLuna/keeki-vods/actions/workflows/ci.yml?query=branch%3Amain)
+[![publish](https://github.com/vexouLuna/keeki-vods/actions/workflows/publish.yml/badge.svg?branch=main)](https://github.com/vexouLuna/keeki-vods/actions/workflows/publish.yml?query=branch%3Amain)
+[![conventions v4.0.0](https://img.shields.io/badge/conventions-v4.0.0-blue)](https://github.com/vexouLuna/conventions/tree/v4.0.0)
+[![websites_keekivods](https://status.vexoul.net/api/v1/endpoints/websites_keekivods/health/badge.svg)](https://status.vexoul.net)
+[![websites_keekivods uptime 7d](https://status.vexoul.net/api/v1/endpoints/websites_keekivods/uptimes/7d/badge.svg)](https://status.vexoul.net)
+<!-- conventions:end -->
+
 [keeki_dechu](https://twitch.tv/keeki_dechu)'s VOD archive: past broadcasts with their YouTube uploads, a timeline
 across all parts, and the Twitch chat replayed alongside.
 
