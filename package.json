@@ -12,9 +12,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@vex/platform-web": "github:vexouLuna/vex-platform-web#v0.15.0",
-    "@vex/ui": "github:vexouLuna/vex-ui#v0.36.2",
-    "@vex/vods-core": "github:vexouLuna/vods-core#v0.49.0",
+    "@vex/platform-web": "github:vexouLuna/vex-platform-web#v0.15.1",
+    "@vex/ui": "github:vexouLuna/vex-ui#v0.36.3",
+    "@vex/vods-core": "github:vexouLuna/vods-core#v0.49.1",
     "vue": "^3.5.43",
     "vue-router": "^4.6.4"
   },
